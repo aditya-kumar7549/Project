@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodShare | Online Food Donation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Decorative Background Blobs -->
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <h2 class="logo">FoodShare<span>+</span></h2>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#donate">Donate</a>
+      <a href="#request">Request</a>
+      <a href="#listings">Listings</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <button class="nav-btn" onclick="scrollToDonate()">Donate Now</button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-tag">🌍 Zero Hunger Mission</p>
+      <h1>Donate Food. <span>Spread Smiles.</span> Save Lives ❤️</h1>
+      <p class="hero-subtext">
+        FoodShare+ connects donors with NGOs and needy people to reduce food waste
+        and help communities.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn primary" onclick="scrollToDonate()">🍲 Donate Food</button>
+        <button class="btn secondary" onclick="scrollToListings()">📦 View Listings</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>🔥 Today’s Impact</h3>
+      <div class="impact-box">
+        <div class="impact-item">
+          <h2 id="totalDonations">0</h2>
+          <p>Donations</p>
+        </div>
+        <div class="impact-item">
+          <h2 id="availableDonations">0</h2>
+          <p>Available</p>
+        </div>
+        <div class="impact-item">
+          <h2 id="collectedDonations">0</h2>
+          <p>Collected</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <h2>10K+</h2>
+        <p>Meals Shared</p>
+      </div>
+      <div class="stat-card">
+        <h2>500+</h2>
+        <p>NGOs Connected</p>
+      </div>
+      <div class="stat-card">
+        <h2>100%</h2>
+        <p>Free & Safe</p>
+      </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="glass-card">
+      <h2>🍲 Donate Food</h2>
+      <p class="subtext">Fill details and help someone today.</p>
+
+      <form id="donationForm" class="form">
+        <div class="grid">
+          <div class="form-group">
+            <label>Donor Name</label>
+            <input type="text" id="donorName" placeholder="Enter your name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Food Type</label>
+            <input type="text" id="foodType" placeholder="Ex: Rice, Curry, Bread" required />
+          </div>
+
+          <div class="form-group">
+            <label>Quantity (People)</label>
+            <input type="number" id="quantity" placeholder="Ex: 10" required />
+          </div>
+
+          <div class="form-group">
+            <label>Pickup Location</label>
+            <input type="text" id="location" placeholder="Ex: Kolkata, Salt Lake" required />
+          </div>
+
+          <div class="form-group">
+            <label>Contact Number</label>
+            <input type="tel" id="contact" placeholder="Ex: 9876543210" required />
+          </div>
+
+          <div class="form-group">
+            <label>Expiry Time</label>
+            <select id="expiry" required>
+              <option value="">Select</option>
+              <option value="1 Hour">1 Hour</option>
+              <option value="2 Hours">2 Hours</option>
+              <option value="4 Hours">4 Hours</option>
+              <option value="6 Hours">6 Hours</option>
+              <option value="12 Hours">12 Hours</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn primary full">Submit Donation</button>
+      </form>
+    </section>
+
+    <!-- Request Section -->
+    <section id="request" class="glass-card">
+      <h2>🧑‍🤝‍🧑 Request Food</h2>
+      <p class="subtext">NGOs / needy people can request food here.</p>
+
+      <form id="requestForm" class="form">
+        <div class="grid">
+          <div class="form-group">
+            <label>Requester Name / NGO</label>
+            <input type="text" id="reqName" placeholder="Enter name" required />
+          </div>
+
+          <div class="form-group">
+            <label>Food Needed</label>
+            <input type="text" id="reqFood" placeholder="Ex: Cooked meals, packed food" required />
+          </div>
+
+          <div class="form-group">
+            <label>Quantity Needed</label>
+            <input type="number" id="reqQuantity" placeholder="Ex: 20" required />
+          </div>
+
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="reqLocation" placeholder="Ex: Howrah, New Town" required />
+          </div>
+
+          <div class="form-group">
+            <label>Contact</label>
+            <input type="tel" id="reqContact" placeholder="Ex: 9123456780" required />
+          </div>
+
+          <div class="form-group">
+            <label>Urgency</label>
+            <select id="urgency" required>
+              <option value="">Select</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn secondary full">Submit Request</button>
+      </form>
+    </section>
+
+    <!-- Search + Filter -->
+    <section class="glass-card">
+      <h2>🔍 Search Food Donations</h2>
+      <input type="text" id="searchInput" placeholder="Search by food type or location..." />
+
+      <div class="filter-row">
+        <select id="filterStatus">
+          <option value="All">All Status</option>
+          <option value="Available">Available</option>
+          <option value="Collected">Collected</option>
+        </select>
+
+        <button id="clearAll" class="btn danger">Clear All Listings</button>
+      </div>
+    </section>
+
+    <!-- Listings -->
+    <section id="listings" class="glass-card">
+      <h2>📦 Donation Listings</h2>
+      <div id="donationList" class="list"></div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="glass-card">
+      <h2>💬 People Love FoodShare+</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>“FoodShare helped us collect food quickly for our NGO. Amazing platform!”</p>
+          <h4>— NGO Volunteer</h4>
+        </div>
+        <div class="testimonial">
+          <p>“Easy donation process and safe pickup. Proud to contribute!”</p>
+          <h4>— Local Donor</h4>
+        </div>
+        <div class="testimonial">
+          <p>“This website is a blessing. Food reached us at the right time.”</p>
+          <h4>— Community Member</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="glass-card">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q">Is donation free?</button>
+          <div class="faq-a">Yes, it is completely free. FoodShare+ is for social good.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How does pickup work?</button>
+          <div class="faq-a">NGOs or volunteers will contact the donor and pick up the food.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I donate packed food?</button>
+          <div class="faq-a">Yes! Cooked, packed, or sealed food can be donated safely.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>🌍 FoodShare+ | Together we can reduce hunger & food waste ❤️</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
